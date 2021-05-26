@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct GameView: View {
-    @State private var hasStarted = false
     @State private var isHuman = false
     private let rows = 3
     private let columns = 3
