@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82345150265ED57D00E7064F /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234514F265ED57D00E7064F /* WelcomeView.swift */; };
+		82345151265ED57D00E7064F /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234514F265ED57D00E7064F /* WelcomeView.swift */; };
 		829984EC265E328300B80673 /* TicTacToeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829984D9265E328200B80673 /* TicTacToeApp.swift */; };
 		829984ED265E328300B80673 /* TicTacToeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829984D9265E328200B80673 /* TicTacToeApp.swift */; };
 		829984EE265E328300B80673 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829984DA265E328200B80673 /* ContentView.swift */; };
@@ -20,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8234514F265ED57D00E7064F /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		829984D9265E328200B80673 /* TicTacToeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeApp.swift; sourceTree = "<group>"; };
 		829984DA265E328200B80673 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		829984DB265E328300B80673 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,6 +69,7 @@
 				829984D9265E328200B80673 /* TicTacToeApp.swift */,
 				829984DA265E328200B80673 /* ContentView.swift */,
 				82998503265E33FD00B80673 /* GameView.swift */,
+				8234514F265ED57D00E7064F /* WelcomeView.swift */,
 				829984FE265E33D800B80673 /* Helpers.swift */,
 				829984DB265E328300B80673 /* Assets.xcassets */,
 			);
@@ -195,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82345150265ED57D00E7064F /* WelcomeView.swift in Sources */,
 				829984EE265E328300B80673 /* ContentView.swift in Sources */,
 				829984FF265E33D800B80673 /* Helpers.swift in Sources */,
 				82998504265E33FD00B80673 /* GameView.swift in Sources */,
@@ -206,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82345151265ED57D00E7064F /* WelcomeView.swift in Sources */,
 				829984EF265E328300B80673 /* ContentView.swift in Sources */,
 				82998500265E33D800B80673 /* Helpers.swift in Sources */,
 				82998505265E33FD00B80673 /* GameView.swift in Sources */,
