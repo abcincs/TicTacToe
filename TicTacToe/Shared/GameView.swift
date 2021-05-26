@@ -16,12 +16,32 @@ struct GameView: View {
     @State private var showAlert = false
     var body: some View {
         VStack {
-            Text("")
+            HStack {
+                Image("check")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 50, height: 50)
+                    .clipShape(Circle())
+                VStack(alignment: .leading) {
+                    Text("@eventsBash")
+                        .font(.callout)
+                    Text("EventsBash")
+                        .font(.caption)
+
+                }
+                Spacer()
+                Label("05:00", systemImage: "alarm")
+                    .font(.system(size: 16, weight: .bold))
+                    .padding(8)
+                    .background(Color(.tertiarySystemGroupedBackground))
+                    .cornerRadius(6)
+            }
+            .padding(.horizontal, 8)
             GridStack(rows: rows, columns: columns) { row, column in
                 ZStack {
                     Rectangle()
                         .stroke(Color(.label), lineWidth: 3)
-                        .frame(width: 100, height: 100)
+                        .frame(maxWidth: 100, maxHeight: 100)
                         .background(Color(.systemBackground))
                         .onTapGesture {
                             items[indexFor(row,column)].hasbeenSelected.toggle()
@@ -42,7 +62,7 @@ struct GameView: View {
                 }
                 
             }
-            .hidden()
+//            .hidden()
             Button(action: {
                 items = [Item](repeating: .example, count: 9)
                 
@@ -103,5 +123,6 @@ struct GameView: View {
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
         GameView()
+//            .preferredColorScheme(.dark)
     }
 }
