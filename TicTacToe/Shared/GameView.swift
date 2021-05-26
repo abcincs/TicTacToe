@@ -13,74 +13,128 @@ struct GameView: View {
     private let columns = 3
     @State private var items  = [Item](repeating: .example, count: 9)
     @State private var showAlert = false
+    
+    @Environment(\.presentationMode) private var presentationMode
     var body: some View {
-        VStack {
-            HStack {
-                Image("check")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50, height: 50)
-                    .clipShape(Circle())
-                VStack(alignment: .leading) {
-                    Text("@eventsBash")
-                        .font(.callout)
-                    Text("EventsBash")
-                        .font(.caption)
-
-                }
-                Spacer()
-                Label("05:00", systemImage: "alarm")
-                    .font(.system(size: 16, weight: .bold))
-                    .padding(8)
-                    .background(Color(.tertiarySystemGroupedBackground))
-                    .cornerRadius(6)
-            }
-            .padding(.horizontal, 8)
-            GridStack(rows: rows, columns: columns) { row, column in
-                ZStack {
-                    Rectangle()
-                        .stroke(Color(.label), lineWidth: 3)
-                        .frame(maxWidth: 100, maxHeight: 100)
-                        .background(Color(.systemBackground))
+        ZStack {
+            VStack {
+                HStack {
+                    
+                    Circle()
+                        .strokeBorder(Color(.secondarySystemBackground), lineWidth: 1.0)
+                        .frame(width: 50, height: 50)
+                        .overlay(Image(systemName: "chevron.left"))
                         .onTapGesture {
-                            items[indexFor(row,column)].hasbeenSelected.toggle()
-                            items[indexFor(row,column)].isHuman = isHuman
-                            isHuman.toggle()
-                            
-                            if isWinner().0 {
-                                showAlert = true
-                                print(isWinner().1)
-                            }
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                        
+                    Spacer()
+                    Circle()
+                        .strokeBorder(Color(.secondarySystemBackground), lineWidth: 1.0)
+                        .frame(width: 50, height: 50)
+                        .overlay(Image(systemName: "circles.hexagongrid.fill"))
+                }
+                .padding(10)
+                Spacer()
+                HStack {
+                    Image("check")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                        .clipShape(Circle())
+                    VStack(alignment: .leading) {
+                        Text("@eventsBash")
+                            .font(.callout)
+                        Text("EventsBash")
+                            .font(.caption)
+
+                    }
+                    Spacer()
+                    Label("05:00", systemImage: "alarm")
+                        .font(.system(size: 16, weight: .bold))
+                        .padding(8)
+                        .background(Color(.tertiarySystemGroupedBackground))
+                        .cornerRadius(6)
+                }
+                .padding(.horizontal, 8)
+                GridStack(rows: rows, columns: columns) { row, column in
+                    ZStack {
+                        Rectangle()
+                            .stroke(Color(.label), lineWidth: 3)
+                            .frame(maxWidth: 100, maxHeight: 100)
+                            .background(Color(.systemBackground))
+                            .onTapGesture {
+                                items[indexFor(row,column)].hasbeenSelected.toggle()
+                                items[indexFor(row,column)].isHuman = isHuman
+                                isHuman.toggle()
+                                
+                                if isWinner().0 {
+                                    showAlert = true
+                                    print(isWinner().1)
+                                }
+                        }
+                        
+                        Image(items[indexFor(row,column)].hasbeenSelected ? (items[indexFor(row,column)].isHuman ? "human" : "cpu") : "circle")
+                            .resizable()
+                            .frame(width: 70, height: 70)
+                            .clipShape(Circle())
+                            .allowsHitTesting(false)
                     }
                     
-                    Image(items[indexFor(row,column)].hasbeenSelected ? (items[indexFor(row,column)].isHuman ? "human" : "cpu") : "circle")
-                        .resizable()
-                        .frame(width: 70, height: 70)
-                        .clipShape(Circle())
-                        .allowsHitTesting(false)
                 }
                 
-            }
-//            .hidden()
-            Button(action: {
-                items = [Item](repeating: .example, count: 9)
+                HStack {
+                    
+                    Label("05:00", systemImage: "alarm")
+                        .font(.system(size: 16, weight: .bold))
+                        .padding(8)
+                        .background(Color(.tertiarySystemGroupedBackground))
+                        .cornerRadius(6)
+                    
+                    Spacer()
+
+                    Image("check")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                        .clipShape(Circle())
+                    VStack(alignment: .leading) {
+                        Text("@eventsBash")
+                            .font(.callout)
+                        Text("EventsBash")
+                            .font(.caption)
+
+                    }
+                    
+                }
+                .padding(.horizontal, 8)
+    //            .hidden()
                 
-            }) {
-                Text("Reset")
-                    .bold()
-                    .foregroundColor(Color.white)
-                    .frame(width: 200, height: 50)
-                    .background(LinearGradient(gradient: Gradient(colors: [Color(.label), Color(.red)]), startPoint: .bottomLeading, endPoint: .trailing))
-                    .clipShape(Capsule())
+                Button(action: {
+                    items = [Item](repeating: .example, count: 9)
+                    
+                }) {
+                    Text("Reset")
+                        .bold()
+                        .foregroundColor(Color(.systemBackground))
+                        .frame(width: 200, height: 45)
+                        .background(Color.primary)
+                        .cornerRadius(8)
+                }
+                .animation(.spring())
+                .transition(.scale(scale: 0.8, anchor: .center))
+                .opacity(items.map({ $0.hasbeenSelected }).allSatisfy({ $0 }) ? 1 : 0)
+                
+                
+                Spacer()
             }
-            .animation(.spring())
-            .transition(.scale(scale: 0.8, anchor: .center))
-            .opacity(items.map({ $0.hasbeenSelected }).allSatisfy({ $0 }) ? 1 : 0)
-        }
-        .alert(isPresented:$showAlert) {
-            Alert(title: Text("Winner"), message: Text(isWinner().1), dismissButton: .default(Text("Dismiss")){
-               items = [Item](repeating: .example, count: 9)
+            .alert(isPresented:$showAlert) {
+                Alert(title: Text("Winner"), message: Text(isWinner().1), dismissButton: .default(Text("Dismiss")){
+                    items = [Item](repeating: .example, count: 9)
                 })
+            }
+            
+            
         }
     }
     
@@ -122,6 +176,6 @@ struct GameView: View {
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
         GameView()
-//            .preferredColorScheme(.dark)
+            .preferredColorScheme(.dark)
     }
 }
