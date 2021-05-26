@@ -17,7 +17,7 @@ struct Item: Identifiable {
 
 struct ContentView: View {
     var body: some View {
-        GameView()
+        WelcomeView()
     }
 }
 
