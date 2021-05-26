@@ -162,6 +162,7 @@ struct GameView: View {
                     .onChanged { gesture in
                         self.offset = gesture.translation
                     }
+
                     .onEnded { _ in
                         if abs(self.offset.width) > 100 {
                             // remove the card
@@ -182,6 +183,8 @@ struct GameView: View {
     
     private func indexFor(_ row: Int, _ column: Int) -> Int {
         return  row * columns + column
+        
+        
     }
     
     private func isWinner() -> (Bool, String) {
