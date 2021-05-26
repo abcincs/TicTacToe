@@ -16,15 +16,14 @@ struct GameView: View {
     @State private var showAlert = false
     @State private var offset = CGSize.zero
     
-    
+    @State private var setupAnimation = false
+    @State private var pushCardUp = false
     
     @Environment(\.presentationMode) private var presentationMode
     var body: some View {
         ZStack {
             VStack {
                 HStack {
-                    
-                    
                     Circle()
                         .strokeBorder(Color(.secondarySystemBackground), lineWidth: 1.0)
                         .frame(width: 50, height: 50)
@@ -87,6 +86,7 @@ struct GameView: View {
                     }
                     
                 }
+                .rotation3DEffect(.degrees(setupAnimation ? 0 : 45), axis: (x: 1, y: 0, z: 0))
                 
                 HStack {
                     
@@ -136,12 +136,18 @@ struct GameView: View {
             
             
             OpponentView
+                .offset(y: pushCardUp ? 0 : 1000)
             
         }
         .alert(isPresented:$showAlert) {
             Alert(title: Text("Winner"), message: Text(isWinner().1), dismissButton: .default(Text("Dismiss")){
                 items = [Item](repeating: .example, count: 9)
             })
+        }
+        .onAppear() {
+            withAnimation(Animation.spring().speed(0.4)) {
+                pushCardUp = true
+            }
         }
         .navigationTitle("")
         .navigationBarHidden(true)
@@ -248,8 +254,12 @@ extension GameView {
                 }
                 
                 .onEnded { _ in
-                    if abs(self.offset.width) > 150 {
+                    if abs(self.offset.width) > 100 || abs(self.offset.height) > 100 {
                         // remove the card
+                        withAnimation(Animation.spring().speed(0.2)) {
+                            setupAnimation = true
+                        }
+
                     } else {
                         self.offset = .zero
                     }
