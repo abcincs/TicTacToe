@@ -14,6 +14,8 @@ struct GameView: View {
     @State private var items  = [Item](repeating: .example, count: 9)
     @State private var showAlert = false
     
+    @State private var offset = CGSize.zero
+    
     @Environment(\.presentationMode) private var presentationMode
     var body: some View {
         ZStack {
@@ -128,13 +130,53 @@ struct GameView: View {
                 
                 Spacer()
             }
-            .alert(isPresented:$showAlert) {
-                Alert(title: Text("Winner"), message: Text(isWinner().1), dismissButton: .default(Text("Dismiss")){
-                    items = [Item](repeating: .example, count: 9)
-                })
+            
+            
+            ZStack {
+                HStack(spacing: 20) {
+                    
+                    PlayerView(username: "@cedric", image: Image("check"))
+                    
+                    PlayerView(username: "@elijah", image: Image("check"))
+                }
+                .padding(20)
+                .background(Color(.systemBackground))
+                .cornerRadius(15)
+                .shadow(color: .white, radius: 1)
+
+                Text("VS")
+                    .font(Font.title.bold())
+                    .foregroundColor(.white)
+                    .frame(width: 70, height: 70)
+                    .background(Color.pink)
+                    .clipShape(Circle())
+                    .shadow(color: .white, radius: 1)
+                    .offset(y: -15)
             }
-            
-            
+            .rotationEffect(.degrees(Double(offset.width / 5)))
+            .offset(x: offset.width * 5, y: offset.height * 5)
+            .opacity(2 - Double(abs(offset.width / 50)))
+            .animation(.spring())
+            .gesture(
+                DragGesture()
+                    .onChanged { gesture in
+                        self.offset = gesture.translation
+                    }
+                    .onEnded { _ in
+                        if abs(self.offset.width) > 100 {
+                            // remove the card
+                        } else {
+                            self.offset = .zero
+                        }
+                    }
+            )
+
+        }
+        
+        .alert(isPresented:$showAlert) {
+            Alert(title: Text("Winner"), message: Text(isWinner().1), dismissButton: .default(Text("Dismiss")){
+                items = [Item](repeating: .example, count: 9)
+            })
         }
     }
     
@@ -176,6 +218,26 @@ struct GameView: View {
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
         GameView()
-            .preferredColorScheme(.dark)
+//            .preferredColorScheme(.dark)
+    }
+}
+
+struct PlayerView: View {
+    let username: String
+    let image: Image
+    var body: some View {
+        VStack(spacing: 10) {
+            image
+                .resizable()
+                .padding(30)
+                .frame(width: 120, height: 120)
+                .background(Color(.secondarySystemBackground))
+                .cornerRadius(15)
+            
+            Text(username)
+                .fontWeight(.bold)
+                .lineLimit(1)
+                .truncationMode(.middle)
+        }
     }
 }
