@@ -22,7 +22,7 @@ struct WelcomeView: View {
                             .blur(radius: 0.6)
                             .offset(y: -100)
                     )
-                    .overlay(Color(.systemBackground).opacity(0.9))
+                    .overlay(Color(.systemBackground).opacity(0.8))
                 
                 VStack(alignment: .leading) {
                     Spacer()
