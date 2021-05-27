@@ -46,5 +46,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>Privacy — Local Network Usage Description</key>
+	<string> TicTacToe needs to use your phone’s data to discover devices nearby</string>
 </dict>
 </plist>

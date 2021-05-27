@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		820B783526602E2A004D8AAB /* MultiPeeringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B783426602E2A004D8AAB /* MultiPeeringView.swift */; };
+		820B783626602E2A004D8AAB /* MultiPeeringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B783426602E2A004D8AAB /* MultiPeeringView.swift */; };
+		820B783D26603239004D8AAB /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B783C26603239004D8AAB /* PlayerModel.swift */; };
+		820B784126603253004D8AAB /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B784026603253004D8AAB /* ChatMessage.swift */; };
+		820B7846266032B2004D8AAB /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B7845266032B2004D8AAB /* Formatters.swift */; };
 		82345150265ED57D00E7064F /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234514F265ED57D00E7064F /* WelcomeView.swift */; };
 		82345151265ED57D00E7064F /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234514F265ED57D00E7064F /* WelcomeView.swift */; };
 		829984EC265E328300B80673 /* TicTacToeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829984D9265E328200B80673 /* TicTacToeApp.swift */; };
@@ -22,6 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		820B783426602E2A004D8AAB /* MultiPeeringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPeeringView.swift; sourceTree = "<group>"; };
+		820B783C26603239004D8AAB /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
+		820B784026603253004D8AAB /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		820B7845266032B2004D8AAB /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		8234514F265ED57D00E7064F /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		829984D9265E328200B80673 /* TicTacToeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeApp.swift; sourceTree = "<group>"; };
 		829984DA265E328200B80673 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +62,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		820B783B2660322E004D8AAB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				820B783C26603239004D8AAB /* PlayerModel.swift */,
+				820B784026603253004D8AAB /* ChatMessage.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		820B7844266032AB004D8AAB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				820B7845266032B2004D8AAB /* Formatters.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		829984D3265E328200B80673 = {
 			isa = PBXGroup;
 			children = (
@@ -70,8 +96,11 @@
 				829984DA265E328200B80673 /* ContentView.swift */,
 				82998503265E33FD00B80673 /* GameView.swift */,
 				8234514F265ED57D00E7064F /* WelcomeView.swift */,
+				820B783426602E2A004D8AAB /* MultiPeeringView.swift */,
 				829984FE265E33D800B80673 /* Helpers.swift */,
+				820B783B2660322E004D8AAB /* Models */,
 				829984DB265E328300B80673 /* Assets.xcassets */,
+				820B7844266032AB004D8AAB /* Utilities */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -200,10 +229,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				82345150265ED57D00E7064F /* WelcomeView.swift in Sources */,
+				820B784126603253004D8AAB /* ChatMessage.swift in Sources */,
 				829984EE265E328300B80673 /* ContentView.swift in Sources */,
+				820B7846266032B2004D8AAB /* Formatters.swift in Sources */,
 				829984FF265E33D800B80673 /* Helpers.swift in Sources */,
 				82998504265E33FD00B80673 /* GameView.swift in Sources */,
 				829984EC265E328300B80673 /* TicTacToeApp.swift in Sources */,
+				820B783526602E2A004D8AAB /* MultiPeeringView.swift in Sources */,
+				820B783D26603239004D8AAB /* PlayerModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +249,7 @@
 				82998500265E33D800B80673 /* Helpers.swift in Sources */,
 				82998505265E33FD00B80673 /* GameView.swift in Sources */,
 				829984ED265E328300B80673 /* TicTacToeApp.swift in Sources */,
+				820B783626602E2A004D8AAB /* MultiPeeringView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
