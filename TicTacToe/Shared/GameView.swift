@@ -7,15 +7,22 @@
 
 import SwiftUI
 
+fileprivate struct Item: Identifiable {
+    var id = UUID()
+    var hasbeenSelected = false
+    var isHuman = false
+    static let example = Item(hasbeenSelected: false, isHuman: false)
+}
+
 struct GameView: View {
-    var username: String = ""
+    public var username: String = ""
     @State private var isHuman = false
     private let rows = 3
     private let columns = 3
+    
     @State private var items  = [Item](repeating: .example, count: 9)
     @State private var showAlert = false
     @State private var offset = CGSize.zero
-    
     @State private var setupAnimation = false
     @State private var pushCardUp = false
     
@@ -140,7 +147,7 @@ struct GameView: View {
             
         }
         .alert(isPresented:$showAlert) {
-            Alert(title: Text("Winner"), message: Text(isWinner().1), dismissButton: .default(Text("Dismiss")){
+            Alert(title: Text("Winner"), message: Text(isWinner().1), dismissButton: .default(Text("Got it👍🏽")){
                 items = [Item](repeating: .example, count: 9)
             })
         }

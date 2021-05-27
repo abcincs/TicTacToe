@@ -22,7 +22,7 @@ struct WelcomeView: View {
                             .blur(radius: 0.6)
                             .offset(y: -100)
                     )
-                    .overlay(Color.white.opacity(0.9))
+                    .overlay(Color(.systemBackground).opacity(0.9))
                 
                 VStack(alignment: .leading) {
                     Spacer()
@@ -67,7 +67,7 @@ struct WelcomeView: View {
                     username = String(value.prefix(15))
                 }
             })
-            .ignoresSafeArea(/*@START_MENU_TOKEN@*/.keyboard/*@END_MENU_TOKEN@*/, edges: .all)
+            .ignoresSafeArea(.keyboard, edges: .all)
         }
         
     }

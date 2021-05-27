@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-struct Item: Identifiable {
-    var id = UUID()
-    var hasbeenSelected = false
-    var isHuman = false
-    
-    static let example = Item(hasbeenSelected: false, isHuman: false)
-}
-
 struct ContentView: View {
     var body: some View {
         WelcomeView()
