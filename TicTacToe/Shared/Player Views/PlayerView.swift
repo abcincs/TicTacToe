@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PlayView: View {
+    @EnvironmentObject var playerConnectionManager: PlayerConnectionManager
     let player: PlayerModel
     
     var body: some View {
@@ -38,15 +39,29 @@ struct PlayView: View {
             }
             Section(
                 header: HStack(spacing: 8) {
-                    Text("Available Employees")
+                    Text("Available Gamers")
                     Spacer()
                     ProgressView()
                 }) {
-                EmptyView()
+                ForEach(playerConnectionManager.gamers, id: \.self) { gamer in
+                  HStack {
+                    Text(gamer.displayName)
+                      .font(.headline)
+                    Spacer()
+                    Image(systemName: "arrowshape.turn.up.right.fill")
+                  }
+                }
             }
         }
         .listStyle(InsetGroupedListStyle())
         .navigationTitle(player.username)
+        .onAppear {
+            playerConnectionManager.startBrowsing()
+        }
+        .onDisappear {
+            playerConnectionManager.stopBrowsing()
+        }
+
     }
 }
 

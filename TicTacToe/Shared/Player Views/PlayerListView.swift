@@ -12,7 +12,6 @@ struct PlayerListView: View {
     
     @ObservedObject var playListStore: PlayerListStore
     @State private var showAddJob = false
-    @State private var isReceivingJobs = false
     
     init(playListStore: PlayerListStore = PlayerListStore()) {
         self.playListStore = playListStore
@@ -28,6 +27,8 @@ struct PlayerListView: View {
                 footer: footerView) {
                 ForEach(playListStore.players) { player in
                     PlayerListRowView(player: player)
+                        .environmentObject(playerConnectionManager)
+
                 }
                 .onDelete { indexSet in
                     self.playListStore.players.remove(atOffsets: indexSet)
@@ -45,7 +46,7 @@ struct PlayerListView: View {
     }
     
     var headerView: some View {
-        Toggle("Receive Jobs", isOn: $isReceivingJobs)
+        Toggle("Receive Jobs", isOn: $playerConnectionManager.isReceivingPlayers)
     }
     
     var footerView: some View {

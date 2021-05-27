@@ -1,5 +1,5 @@
 //
-//  JobListRowView.swift
+//  PlayerListRowView.swift
 //  TicTacToe (iOS)
 //
 //  Created by Cédric Bahirwe on 27/05/2021.
@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct PlayerListRowView: View {
+    @EnvironmentObject var playerConnectionManager: PlayerConnectionManager
+
     let player: PlayerModel
     
     var body: some View {
         NavigationLink(
             destination:
-                PlayView(player: player)) {
+                PlayView(player: player).environmentObject(playerConnectionManager)) {
             HStack {
                 VStack(alignment: .leading) {
                     Text(player.username)

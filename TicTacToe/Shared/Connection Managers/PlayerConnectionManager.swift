@@ -9,6 +9,11 @@ import Foundation
 import MultipeerConnectivity
 
 class PlayerConnectionManager: NSObject, ObservableObject {
+    
+    @Published var gamers: [MCPeerID] = []
+    private var nearbyServiceBrowser: MCNearbyServiceBrowser
+
+    
     typealias PlayerReceivedHandler = (PlayerModel) -> Void
     
     private static let service = "tictactoe-games"
@@ -47,8 +52,23 @@ class PlayerConnectionManager: NSObject, ObservableObject {
             peer: myPeerId,
             discoveryInfo: nil,
             serviceType: PlayerConnectionManager.service)
+        
+        nearbyServiceBrowser = MCNearbyServiceBrowser(
+          peer: myPeerId,
+          serviceType: PlayerConnectionManager.service)
+
+        
         super.init()
         nearbyServiceAdvertiser.delegate = self
+        nearbyServiceBrowser.delegate = self
+    }
+    
+    func startBrowsing() {
+      nearbyServiceBrowser.startBrowsingForPeers()
+    }
+
+    func stopBrowsing() {
+      nearbyServiceBrowser.stopBrowsingForPeers()
     }
 }
 
@@ -86,4 +106,20 @@ extension PlayerConnectionManager: MCNearbyServiceAdvertiserDelegate {
         window.rootViewController?.present(alertController, animated: true)
         
     }
+}
+
+
+extension PlayerConnectionManager: MCNearbyServiceBrowserDelegate {
+  func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String: String]?) {
+    // 1
+    if !gamers.contains(peerID) {
+        gamers.append(peerID)
+    }
+  }
+
+  func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
+    guard let index = gamers.firstIndex(of: peerID) else { return }
+    // 2
+    gamers.remove(at: index)
+  }
 }

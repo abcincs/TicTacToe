@@ -14,9 +14,9 @@
 		820B7846266032B2004D8AAB /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B7845266032B2004D8AAB /* Formatters.swift */; };
 		820B784D2660345B004D8AAB /* PlayerConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B784C2660345B004D8AAB /* PlayerConnectionManager.swift */; };
 		820B785526603C43004D8AAB /* PlayerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B785426603C43004D8AAB /* PlayerListView.swift */; };
-		820B785926603CB9004D8AAB /* JobListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B785826603CB9004D8AAB /* JobListRowView.swift */; };
 		820B785D26603CF4004D8AAB /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B785C26603CF4004D8AAB /* PlayerView.swift */; };
 		820B786126603E2F004D8AAB /* AddPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B786026603E2F004D8AAB /* AddPlayerView.swift */; };
+		820B786926604471004D8AAB /* PlayerListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B786826604471004D8AAB /* PlayerListRowView.swift */; };
 		82345150265ED57D00E7064F /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234514F265ED57D00E7064F /* WelcomeView.swift */; };
 		82345151265ED57D00E7064F /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8234514F265ED57D00E7064F /* WelcomeView.swift */; };
 		829984EC265E328300B80673 /* TicTacToeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829984D9265E328200B80673 /* TicTacToeApp.swift */; };
@@ -38,9 +38,9 @@
 		820B7845266032B2004D8AAB /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		820B784C2660345B004D8AAB /* PlayerConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerConnectionManager.swift; sourceTree = "<group>"; };
 		820B785426603C43004D8AAB /* PlayerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListView.swift; sourceTree = "<group>"; };
-		820B785826603CB9004D8AAB /* JobListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListRowView.swift; sourceTree = "<group>"; };
 		820B785C26603CF4004D8AAB /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		820B786026603E2F004D8AAB /* AddPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerView.swift; sourceTree = "<group>"; };
+		820B786826604471004D8AAB /* PlayerListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListRowView.swift; sourceTree = "<group>"; };
 		8234514F265ED57D00E7064F /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		829984D9265E328200B80673 /* TicTacToeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeApp.swift; sourceTree = "<group>"; };
 		829984DA265E328200B80673 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 			children = (
 				820B785426603C43004D8AAB /* PlayerListView.swift */,
 				820B786026603E2F004D8AAB /* AddPlayerView.swift */,
-				820B785826603CB9004D8AAB /* JobListRowView.swift */,
+				820B786826604471004D8AAB /* PlayerListRowView.swift */,
 				820B785C26603CF4004D8AAB /* PlayerView.swift */,
 			);
 			path = "Player Views";
@@ -265,7 +265,6 @@
 				820B784D2660345B004D8AAB /* PlayerConnectionManager.swift in Sources */,
 				829984EE265E328300B80673 /* ContentView.swift in Sources */,
 				820B7846266032B2004D8AAB /* Formatters.swift in Sources */,
-				820B785926603CB9004D8AAB /* JobListRowView.swift in Sources */,
 				829984FF265E33D800B80673 /* Helpers.swift in Sources */,
 				820B785D26603CF4004D8AAB /* PlayerView.swift in Sources */,
 				820B785526603C43004D8AAB /* PlayerListView.swift in Sources */,
@@ -273,6 +272,7 @@
 				829984EC265E328300B80673 /* TicTacToeApp.swift in Sources */,
 				820B783526602E2A004D8AAB /* MultiPeeringView.swift in Sources */,
 				820B783D26603239004D8AAB /* PlayerModel.swift in Sources */,
+				820B786926604471004D8AAB /* PlayerListRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
