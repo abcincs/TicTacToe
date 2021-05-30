@@ -1,2 +1,2 @@
 # TicTacToe
-A simple game using agnostic approach of matrixes
+A simple game using a matrix agnostic approach
